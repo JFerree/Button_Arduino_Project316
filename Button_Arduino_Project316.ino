@@ -17,11 +17,12 @@ const int buttonPin = 2;
 int buttonState = 0;   
 
 
-void setup() {
-// sanity check delay - allows reprogramming if accidently blowing power w/leds
-    delay(2000);
-    FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
-    pinMode(buttonPin, INPUT);    
+void setup() 
+{
+  // sanity check delay - allows reprogramming if accidently blowing power w/leds
+  delay(2000);
+  FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
+  pinMode(buttonPin, INPUT);    
 }
 
 typedef void (*SimplePatternList[])();
@@ -30,8 +31,9 @@ SimplePatternList gPatterns = { turnOnLeds, turnOffLeds };
 //sets the pattern equal to the current button press count
 uint8_t gCurrentPatternNumber = count; // Index number of which pattern is current
 
-void loop() {
- gPatterns[gCurrentPatternNumber]();
+void loop() 
+{
+  gPatterns[gCurrentPatternNumber]();
 
   // send the 'leds' array out to the actual LED strip
   FastLED.show();  
@@ -56,7 +58,8 @@ void turnOnLeds()
 }
 
 void turnOffLeds()
-{FastLED.clear();
+{
+  FastLED.clear();
   // send the 'leds' array out to the actual LED strip
   FastLED.show();  
   // insert a delay to keep the framerate modest
@@ -64,7 +67,9 @@ void turnOffLeds()
 }
 
 void counter()
-{if (digitalRead(buttonPin) == HIGH) {
-   nextPattern(); 
-   }
+{
+  if (digitalRead(buttonPin) == HIGH) 
+  {
+    nextPattern(); 
+  }
 }
