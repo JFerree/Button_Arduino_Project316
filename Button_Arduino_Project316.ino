@@ -13,16 +13,20 @@ CRGB leds[NUM_LEDS];
 #define ARRAY_SIZE(A) (sizeof(A) / sizeof((A)[0]))
 
 //button setup
-const int buttonPin = 2;  
-int buttonState = 0;   
-
+const int buttonPin = 14; //pin D5 on NPC board
+int buttonState = 0;
+int count = 0;
 
 void setup() 
 {
+  
   // sanity check delay - allows reprogramming if accidently blowing power w/leds
   delay(2000);
   FastLED.addLeds<WS2812B, DATA_PIN, GRB>(leds, NUM_LEDS);
-  pinMode(buttonPin, INPUT);    
+  pinMode(buttonPin, INPUT);
+  Serial.begin(115200);
+  
+  Serial.printf("setup\n");    
 }
 
 typedef void (*SimplePatternList[])();
@@ -70,6 +74,7 @@ void counter()
 {
   if (digitalRead(buttonPin) == HIGH) 
   {
+    Serial.printf("buttonPress\n");
     nextPattern(); 
   }
 }
