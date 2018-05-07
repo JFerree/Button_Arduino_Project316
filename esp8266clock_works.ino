@@ -36,8 +36,8 @@ NTPClient timeClient(ntpUDP, NTP_ADDRESS, NTP_OFFSET, NTP_INTERVAL);
 // Create a display object
 SSD1306  display(0x3d, 0, 2); //0x3d for the Adafruit 1.3" OLED, 0x3C being the usual address of the OLED
  
-const char* ssid = "ZRoom";   // insert your own ssid 
-const char* password = "montyisaputz";              // and password
+const char* ssid = "YourSSID";   // insert your own ssid 
+const char* password = "YourPassword";              // and password
 String date;
 String t;
 const char * days[] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"} ;
